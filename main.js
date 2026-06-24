@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-window.addEventListener("resize",resize);
+window.addEventListener("resize", resize);
 
 resize();
 
@@ -49,8 +49,8 @@ function move(){
         nextPlayerX -= speed;
     }
 
-    if(!checkCollision(nextPlayerX,player.pos.y)) player.pos.x = nextPlayerX;
-    if(!checkCollision(player.pos.x,nextPlayerY)) player.pos.y = nextPlayerY;
+    if(!checkCollision(nextPlayerX, player.pos.y)) player.pos.x = nextPlayerX;
+    if(!checkCollision(player.pos.x, nextPlayerY)) player.pos.y = nextPlayerY;
 }
 
 function playerdraw(){
@@ -58,16 +58,16 @@ function playerdraw(){
     ctx.fillRect(((canvas.width) / 2) - (player.size / 2), ((canvas.height) / 2) - (player.size / 2), player.size, player.size);
 }
 
-function checkCollision(newX,newY){
-    for(let my = 0;my < 8;my++){
-        for(let mx = 0;mx < 8;mx++){
+function checkCollision(newX, newY){
+    for(let my = 0; my < 8; my++){
+        for(let mx = 0; mx < 8; mx++){
             if(maze[my][mx]===1){
                 const wx = mx * 16;
                 const wy = my * 16;
                 if(newX > wx &&
                    newX < wx + 16 &&
                    newY > wy &&
-                   newY < wy +16){
+                   newY < wy + 16){
                  return true;
                 }
             }
@@ -76,8 +76,8 @@ function checkCollision(newX,newY){
     return false;
 }
 function mazedraw(){
-    for(let my = 0;my < 8;my++){
-        for(let mx = 0;mx<8;mx++){
+    for(let my = 0; my < 8; my++){
+        for(let mx = 0; mx < 8; mx++){
             if(maze[my][mx]===1){
                 ctx.fillStyle = "white";
                 ctx.fillRect(mx * 16 - player.pos.x - 8,
