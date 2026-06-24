@@ -15,7 +15,7 @@ document.addEventListener("keydown", e => keys[e.key] = true);
 document.addEventListener("keyup", e => keys[e.key] = false);
 
 const player = {
-    pos : {x : 0, y : 0},
+    pos : {x : 32, y : 16},
     size : 8
 };
 
