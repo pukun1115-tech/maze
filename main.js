@@ -54,7 +54,7 @@ function move(){
 }
 
 function playerdraw(){
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "#FFFFFF";
     ctx.fillRect(((canvas.width) / 2) - (player.size / 2), ((canvas.height) / 2) - (player.size / 2), player.size, player.size);
 }
 
@@ -79,7 +79,7 @@ function mazedraw(){
     for(let my = 0; my < 8; my++){
         for(let mx = 0; mx < 8; mx++){
             if(maze[my][mx]===1){
-                ctx.fillStyle = "white";
+                ctx.fillStyle = "#FFFFFF";
                 ctx.fillRect(mx * 16 - player.pos.x - 8 + (canvas.width / 2),
                              my * 16 - player.pos.y - 8 + (canvas.height / 2),
                              16,
