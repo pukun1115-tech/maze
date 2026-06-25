@@ -1,6 +1,8 @@
 const gameCanvas = document.getElementById("canvas");
 const uiCanvas = document.getElementById("ui");
-const ctx = canvas.getContext("2d");
+
+const g = gameCanvas.getContext("2d");
+const ui = uiCanvas.getContext("2d");
 
 window.addEventListener("resize", resize);
 
@@ -23,12 +25,17 @@ const player = {
 loop();
 
 function loop(){
+    g.clearRect(0,0,gameCanvas.width,gameCanvas.height);
+    
     move();
-    playerdraw();
-    mazedraw();
+    drawGame();
     requestAnimationFrame(loop);
 }
 
+function drawGame(){
+    playerDraw();
+    mazeDraw();
+}
 function move(){
     const speed = 0.5;
     let nextPlayerX = player.pos.x;
@@ -54,9 +61,9 @@ function move(){
     if(!checkCollision(player.pos.x, nextPlayerY)) player.pos.y = nextPlayerY;
 }
 
-function playerdraw(){
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fillRect((canvas.width) / 2, (canvas.height) / 2, player.size, player.size);
+function playerDraw(){
+    g.fillStyle = "#FFFFFF";
+    g.fillRect((canvas.width) / 2, (canvas.height) / 2, player.size, player.size);
 }
 
 function checkCollision(newX, newY){
@@ -76,12 +83,12 @@ function checkCollision(newX, newY){
     }
     return false;
 }
-function mazedraw(){
+function mazeDraw(){
     for(let my = 0; my < 8; my++){
         for(let mx = 0; mx < 8; mx++){
             if(maze[my][mx]===1){
-                ctx.fillStyle = "#FFFFFF";
-                ctx.fillRect(mx * mazeSize - player.pos.x + (canvas.width / 2),
+                g.fillStyle = "#FFFFFF";
+                g.fillRect(mx * mazeSize - player.pos.x + (canvas.width / 2),
                              my * mazeSize - player.pos.y + (canvas.height / 2),
                              mazeSize,
                              mazeSize);
