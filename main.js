@@ -13,11 +13,11 @@ function resize(){
 const keys = {};
 document.addEventListener("keydown", e => {
     if (e.key === "Shift" || e.key === "ShiftLeft" || e.key === "ShiftRight") return;
-    keys[e.key] = true
+    keys[e.key] = true;
 });
 document.addEventListener("keyup", e => {
     if (e.key === "Shift" || e.key === "ShiftLeft" || e.key === "ShiftRight") return;
-    keys[e.key] = false
+    keys[e.key] = false;
 });
 
 const player = {
