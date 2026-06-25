@@ -12,12 +12,10 @@ function resize(){
 
 const keys = {};
 document.addEventListener("keydown", e => {
-    if (e.key === "Shift" || e.key === "ShiftLeft" || e.key === "ShiftRight") return;
-    keys[e.key] = true;
+    keys[e.code] = true;
 });
 document.addEventListener("keyup", e => {
-    if (e.key === "Shift" || e.key === "ShiftLeft" || e.key === "ShiftRight") return;
-    keys[e.key] = false;
+    keys[e.code] = false;
 });
 
 const player = {
@@ -41,19 +39,19 @@ function move(){
     let nextPlayerX = player.pos.x;
     let nextPlayerY = player.pos.y;
     
-    if(keys["w"]){
+    if(keys["keyW"]){
         nextPlayerY -= speed;
     }
 
-    if(keys["s"]){
+    if(keys["keyS"]){
         nextPlayerY += speed;
     }
 
-    if(keys["d"]){
+    if(keys["keyD"]){
         nextPlayerX += speed;
     }
 
-    if(keys["a"]){
+    if(keys["keyA"]){
         nextPlayerX -= speed;
     }
 
