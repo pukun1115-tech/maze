@@ -62,12 +62,12 @@ function checkCollision(newX, newY){
     for(let my = 0; my < 8; my++){
         for(let mx = 0; mx < 8; mx++){
             if(maze[my][mx]===1){
-                const wx = mx * 32;
-                const wy = my * 32;
+                const wx = mx * mazeSize;
+                const wy = my * mazeSize;
                 if(newX > wx &&
-                   newX < wx + 32 &&
+                   newX < wx + mazeSize &&
                    newY > wy &&
-                   newY < wy + 32){
+                   newY < wy + mazeSize){
                  return true;
                 }
             }
@@ -80,10 +80,10 @@ function mazedraw(){
         for(let mx = 0; mx < 8; mx++){
             if(maze[my][mx]===1){
                 ctx.fillStyle = "#FFFFFF";
-                ctx.fillRect(mx * 32 - player.pos.x + (canvas.width / 2),
-                             my * 32 - player.pos.y + (canvas.height / 2),
-                             32,
-                             32);
+                ctx.fillRect(mx * mazeSize - player.pos.x + (canvas.width / 2),
+                             my * mazeSize - player.pos.y + (canvas.height / 2),
+                             mazeSize,
+                             mazeSize);
             }
         }
     }
