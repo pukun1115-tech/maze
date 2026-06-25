@@ -11,8 +11,14 @@ function resize(){
 }
 
 const keys = {};
-document.addEventListener("keydown", e => keys[e.key] = true);
-document.addEventListener("keyup", e => keys[e.key] = false);
+document.addEventListener("keydown", e => {
+    if (e.key === "Shift") return;
+    keys[e.key] = true
+});
+document.addEventListener("keyup", e => {
+    if (e.key === "Shift") return;
+    keys[e.key] = false
+});
 
 const player = {
     pos : {x : 320, y : 64},//左上の座標
