@@ -24,11 +24,12 @@ const player = {
 };
 
 canvas.addEventListener("touchstart", e => {
-    player.pos.x += 0;
+    let t = e.touches[0];
+    let tap = true;
 });
 
 canvas.addEventListener("touchend", e => {
-    player.pos.x += 10;
+    let tap = false;
 });
 
 loop();
@@ -63,6 +64,10 @@ function move(){
         nextPlayerX -= speed;
     }
 
+    if(tap){
+        player.pos.x += 10;
+    }
+    
     if(!checkCollision(nextPlayerX, player.pos.y)) player.pos.x = nextPlayerX;
     if(!checkCollision(player.pos.x, nextPlayerY)) player.pos.y = nextPlayerY;
 }
