@@ -23,6 +23,10 @@ const player = {
     size : 64
 };
 
+canvas.addEventListener("touchstart", e => {
+    player.pos.x += 0.005;
+});
+
 loop();
 
 function loop(){
